@@ -1,4 +1,4 @@
-package com.cp.coffeemenu.Controller;
+package com.cp.coffeemenu.controller;
 
 import com.cp.coffeemenu.model.Coffee;
 import com.cp.coffeemenu.service.CoffeeService;
