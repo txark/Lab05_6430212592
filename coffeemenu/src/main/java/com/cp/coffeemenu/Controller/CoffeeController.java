@@ -25,8 +25,11 @@ public class CoffeeController {
     @GetMapping("/{id}")
     public ResponseEntity<Coffee> getCoffeeById(@PathVariable Long id) {
         return coffeeService.getCoffeeById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                // .map(ResponseEntity::ok)
+                // .orElse(ResponseEntity.notFound().build());
+                .map(coffee -> ResponseEntity.ok().body(coffee)) // ถ้าเจอ คืนค่า 200 OK พร้อมข้อมูล
+                .orElseGet(() -> ResponseEntity.notFound().build()); // ถ้าไม่เจอ คืนค่า 404 Not Found
+
     }
 
     @PostMapping
