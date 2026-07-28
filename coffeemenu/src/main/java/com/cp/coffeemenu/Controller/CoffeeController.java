@@ -13,7 +13,7 @@ import java.util.List;
 public class CoffeeController {
     private final CoffeeService coffeeService;
 
-    puclic CoffeeController(CoffeeService coffeeService) {
+    public CoffeeController(CoffeeService coffeeService) {
         this.coffeeService = coffeeService;
     }
 
@@ -25,8 +25,8 @@ public class CoffeeController {
     @GetMapping("/{id}")
     public ResponseEntity<Coffee> getCoffeeById(@PathVariable Long id) {
         return coffeeService.getCoffeeById(id)
-                .map(coffee -> new ResponseEntity<>(coffee, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
